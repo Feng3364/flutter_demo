@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         highlightColor: Color.fromRGBO(0, 0, 0, 0),
         // 点击颜色
         splashColor: Color.fromRGBO(0, 0, 0, 0),
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       home: RootPage(),
       debugShowCheckedModeBanner: false,

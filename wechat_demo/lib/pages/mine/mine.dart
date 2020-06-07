@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wechatdemo/const.dart';
 import 'package:wechatdemo/pages/discover/discover_cell.dart';
 
 class MinePage extends StatefulWidget {
@@ -7,7 +8,6 @@ class MinePage extends StatefulWidget {
 }
 
 class _MinePageState extends State<MinePage> {
-
   Widget headerWidget() {
     return Container(
       color: Colors.white,
@@ -20,24 +20,28 @@ class _MinePageState extends State<MinePage> {
               width: 70,
               height: 70,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(image: AssetImage("images/Hank.png"), fit: BoxFit.cover)
-              ),
-            ),// 头像
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: AssetImage("images/Hank.png"), fit: BoxFit.cover)),
+            ), // 头像
             Container(
               margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
-              width: MediaQuery.of(context).size.width - 120,
+              width: ScreenWidth(context) - 120,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Felix", style: TextStyle(fontSize: 25, color: Colors.black)),
+                  Text("Felix",
+                      style: TextStyle(fontSize: 25, color: Colors.black)),
                   Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text("微信号：Feng", style: TextStyle(fontSize: 13, color: Colors.grey)),
-                        Image(image: AssetImage("images/icon_right.png"), width: 15)
+                        Text("微信号：Feng",
+                            style: TextStyle(fontSize: 13, color: Colors.grey)),
+                        Image(
+                            image: AssetImage("images/icon_right.png"),
+                            width: 15)
                       ],
                     ),
                   )
