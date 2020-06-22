@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wechatdemo/pages/chat/chat_model.dart';
+import 'package:wechatdemo/pages/chat/search_bar.dart';
 import 'package:wechatdemo/tools/http_manager.dart' as http;
 
 import '../../const.dart';
@@ -9,7 +10,11 @@ class ChatPage extends StatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatPageState extends State<ChatPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   List<Chat> _datas = [];
   void initState() {
     super.initState();
@@ -50,8 +55,10 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         appBar: AppBar(
+          elevation: 0.0,
           title: Text("微信"),
           backgroundColor: AppThemeColor,
           actions: <Widget>[
@@ -84,23 +91,30 @@ class _ChatPageState extends State<ChatPage> {
                 ? Center(child: Text("Loading..."))
                 : ListView.builder(
                     itemCount: _datas.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text(_datas[index].name),
-                        subtitle: Container(
-                          alignment: Alignment.bottomCenter,
-                          padding: EdgeInsets.only(right: 10),
-                          height: 25,
-                          child: Text(
-                            _datas[index].message,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(_datas[index].imageUrl),
-                        ),
-                      );
-                    },
+                    itemBuilder: _buildCellforRow,
                   )));
+  }
+
+  Widget _buildCellforRow(BuildContext context, int index) {
+    if (index == 0) {
+      return SearchCell(datas: _datas);
+    }
+    // index--表示减去第一行的searchBar
+    index--;
+    return ListTile(
+      title: Text(_datas[index].name),
+      subtitle: Container(
+        alignment: Alignment.bottomCenter,
+        padding: EdgeInsets.only(right: 10),
+        height: 25,
+        child: Text(
+          _datas[index].message,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(_datas[index].imageUrl),
+      ),
+    );
   }
 }
