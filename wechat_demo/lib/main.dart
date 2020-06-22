@@ -10,12 +10,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // 长按颜色
-        highlightColor: Color.fromRGBO(0, 0, 0, 0),
-        // 点击颜色
-        splashColor: Color.fromRGBO(0, 0, 0, 0),
-        primarySwatch: Colors.yellow,
-      ),
+          // 长按颜色
+          highlightColor: Color.fromRGBO(0, 0, 0, 0),
+          // 点击颜色
+          splashColor: Color.fromRGBO(0, 0, 0, 0),
+          primarySwatch: Colors.yellow,
+          // 聊天页的扫一扫卡片
+          cardColor: Color.fromRGBO(1, 1, 1, 0.65)),
       home: RootPage(),
       debugShowCheckedModeBanner: false,
     );
