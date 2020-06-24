@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wechatdemo/const.dart';
 import 'package:wechatdemo/pages/discover/discover_cell.dart';
 
@@ -8,6 +11,23 @@ class MinePage extends StatefulWidget {
 }
 
 class _MinePageState extends State<MinePage> {
+  File _avatarFile;
+  MethodChannel _methodChannel = MethodChannel("mine_page");
+
+  @override
+  void initState() {
+    super.initState();
+    _methodChannel.setMethodCallHandler((call) {
+      if (call.method == "imagePath") {
+        String imagePath = call.arguments.toString().substring(7);
+        setState(() {
+          _avatarFile = File(imagePath);
+        });
+      }
+      return null;
+    });
+  }
+
   Widget headerWidget() {
     return Container(
       color: Colors.white,
@@ -16,14 +36,22 @@ class _MinePageState extends State<MinePage> {
         margin: EdgeInsets.fromLTRB(20, 100, 20, 10),
         child: Row(
           children: <Widget>[
-            Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: AssetImage("images/Hank.png"), fit: BoxFit.cover)),
-            ), // 头像
+            GestureDetector(
+              onTap: () {
+                _methodChannel.invokeMapMethod("picture");
+              },
+              child: Container(
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image: _avatarFile == null
+                            ? AssetImage("images/Hank.png")
+                            : FileImage(_avatarFile),
+                        fit: BoxFit.cover)),
+              ), // 头像
+            ),
             Container(
               margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
               width: ScreenWidth(context) - 120,
