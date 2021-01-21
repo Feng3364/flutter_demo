@@ -7,12 +7,7 @@ class DiscoverCell extends StatefulWidget {
   final String imageName;
   final String subImageName;
 
-  DiscoverCell({
-    this.title,
-    this.subTitle,
-    this.imageName,
-    this.subImageName
-  });
+  DiscoverCell({this.title, this.subTitle, this.imageName, this.subImageName});
 
   State<StatefulWidget> createState() => _DiscoverCellState();
 }
@@ -22,7 +17,6 @@ class _DiscoverCellState extends State<DiscoverCell> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -66,7 +60,9 @@ class _DiscoverCellState extends State<DiscoverCell> {
               child: Row(
                 children: <Widget>[
                   widget.subTitle != null ? Text(widget.subTitle) : Text(""),
-                  widget.subImageName != null ? Image(image: AssetImage(widget.subImageName), width: 12) : Container(),
+                  widget.subImageName != null
+                      ? Image(image: AssetImage(widget.subImageName), width: 12)
+                      : Container(),
                   Image(image: AssetImage("images/icon_right.png"), width: 15),
                 ],
               ),

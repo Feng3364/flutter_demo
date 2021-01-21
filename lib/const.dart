@@ -8,5 +8,3 @@ double ScreenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
 /// 屏幕高度
 double ScreenHeight(BuildContext context) => MediaQuery.of(context).size.height;
-
-///

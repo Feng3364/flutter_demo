@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wechatdemo/const.dart';
 import 'package:wechatdemo/pages/discover/discover_child_page.dart';
-import 'package:wechatdemo/pages/friends/FriendsCell.dart';
+import 'package:wechatdemo/pages/friends/friend_cell.dart';
 import 'package:wechatdemo/pages/friends/friends_data.dart';
 
 import 'index_bar.dart';
@@ -70,8 +70,9 @@ class _FriendsPageState extends State<FriendsPage>
     // 本地cell
     if (index < _headerData.length) {
       return FriendsCell(
-          imageAssets: _headerData[index].imageUrl,
-          name: _headerData[index].name);
+        imageAssets: _headerData[index].imageUrl,
+        name: _headerData[index].name,
+      );
     }
 
     bool _hiddenIndex = index > _headerData.length &&
@@ -109,6 +110,7 @@ class _FriendsPageState extends State<FriendsPage>
       ),
       body: Stack(
         children: <Widget>[
+          //通讯录
           Container(
             color: AppThemeColor,
             child: ListView.builder(
@@ -116,13 +118,14 @@ class _FriendsPageState extends State<FriendsPage>
               itemCount: _listDatas.length + _headerData.length,
               itemBuilder: _itemForRow,
             ),
-          ), //通讯录
+          ),
+          //索引表
           IndexBar(indexBarCallBack: (String str) {
             if (_groupOffsetMap[str] != null) {
               _scrollController.animateTo(_groupOffsetMap[str],
                   duration: Duration(microseconds: 100), curve: Curves.easeIn);
             }
-          }) //索引表
+          })
         ],
       ),
     );

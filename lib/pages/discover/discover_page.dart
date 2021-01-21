@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wechatdemo/const.dart';
 
 import 'discover_cell.dart';
+import 'discover_line.dart';
 
 class DiscoverPage extends StatefulWidget {
   @override
@@ -34,11 +35,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               imageName: "images/扫一扫.png",
               title: "扫一扫",
             ),
-            Row(
-              children: <Widget>[
-                Container(width: 30, height: 0.5, color: Colors.white),
-              ],
-            ),
+            DiscoverLine(),
             DiscoverCell(
               imageName: "images/摇一摇.png",
               title: "摇一摇",
@@ -48,11 +45,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               imageName: "images/看一看icon.png",
               title: "看一看",
             ),
-            Row(
-              children: <Widget>[
-                Container(width: 30, height: 0.5, color: Colors.white),
-              ],
-            ),
+            DiscoverLine(),
             DiscoverCell(
               imageName: "images/搜一搜.png",
               title: "搜一搜",
@@ -69,11 +62,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               subTitle: "618限时特价",
               subImageName: "images/badge.png",
             ),
-            Row(
-              children: <Widget>[
-                Container(width: 30, height: 0.5, color: Colors.white),
-              ],
-            ),
+            DiscoverLine(),
             DiscoverCell(
               imageName: "images/游戏.png",
               title: "游戏",

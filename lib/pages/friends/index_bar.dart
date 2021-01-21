@@ -48,21 +48,22 @@ class _IndexBarState extends State<IndexBar> {
       child: Row(
         children: <Widget>[
           Container(
-              alignment: Alignment(0.0, _indicatorY),
-              width: 100,
-              child: _isDraging
-                  ? Stack(
-                      alignment: Alignment(-0.2, 0),
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage("images/气泡.png"),
-                          width: 60,
-                        ),
-                        Text(_indicatorText,
-                            style: TextStyle(fontSize: 25, color: Colors.white))
-                      ],
-                    )
-                  : null),
+            alignment: Alignment(0.0, _indicatorY),
+            width: 100,
+            child: _isDraging
+                ? Stack(
+                    alignment: Alignment(-0.2, 0),
+                    children: <Widget>[
+                      Image(
+                        image: AssetImage("images/气泡.png"),
+                        width: 60,
+                      ),
+                      Text(_indicatorText,
+                          style: TextStyle(fontSize: 25, color: Colors.white))
+                    ],
+                  )
+                : null,
+          ),
           GestureDetector(
             child: Container(
               color: Color.fromRGBO(1, 1, 1, _isDraging ? 0.5 : 0),
@@ -75,6 +76,7 @@ class _IndexBarState extends State<IndexBar> {
                 _isDraging = true;
                 _indicatorText = INDEX_WORDS[index];
                 _indicatorY = 2.2 / 28 * index - 1.1;
+                print(_indicatorY);
               });
             },
             onVerticalDragDown: (DragDownDetails details) {
@@ -84,6 +86,7 @@ class _IndexBarState extends State<IndexBar> {
                 _isDraging = true;
                 _indicatorText = INDEX_WORDS[index];
                 _indicatorY = 2.2 / 28 * index - 1.1;
+                print(_indicatorY);
               });
             },
             onVerticalDragEnd: (DragEndDetails details) {

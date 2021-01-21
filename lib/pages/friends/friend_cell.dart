@@ -14,6 +14,7 @@ class FriendsCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        // 字母
         Container(
           margin: EdgeInsets.only(left: 10),
           alignment: Alignment.centerLeft,
@@ -21,35 +22,38 @@ class FriendsCell extends StatelessWidget {
           color: Color.fromRGBO(1, 1, 1, 0),
           child: groupTitle == null
               ? null
-              : Text(
-                  groupTitle,
-                  style: TextStyle(color: Colors.grey),
-                ),
+              : Text(groupTitle, style: TextStyle(color: Colors.grey)),
         ),
+        // cell
         Container(
-            child: Container(
-          color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              Container(
+          child: Container(
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                Container(
                   margin: EdgeInsets.all(10),
                   width: 34,
                   height: 34,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      image: DecorationImage(
-                          image: imageUrl != null
-                              ? NetworkImage(imageUrl)
-                              : AssetImage(imageAssets)))),
-              Container(
-                child: Text(
-                  name,
-                  style: TextStyle(fontSize: 17),
+                    borderRadius: BorderRadius.circular(6),
+                    image: DecorationImage(
+                      image: imageUrl != null
+                          ? NetworkImage(imageUrl)
+                          : AssetImage(imageAssets),
+                    ),
+                  ),
                 ),
-              )
-            ],
+                Container(
+                  child: Text(
+                    name,
+                    style: TextStyle(fontSize: 17),
+                  ),
+                )
+              ],
+            ),
           ),
-        )), //cell内容
+        ),
+        // 分割线
         Row(
           children: <Widget>[
             Container(

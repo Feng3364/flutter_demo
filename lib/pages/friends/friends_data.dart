@@ -17,7 +17,7 @@ List<Friends> datas = [
       indexLetter: 'F'),
   Friends(
       imageUrl: 'https://randomuser.me/api/portraits/women/16.jpg',
-      name: '安莉',
+      name: '安莉安莉安莉安莉安莉安莉安莉安莉安莉安莉安莉安莉安莉',
       indexLetter: 'A'),
   Friends(
       imageUrl: 'https://randomuser.me/api/portraits/men/31.jpg',
