@@ -34,7 +34,7 @@ class _MinePageState extends State<MinePage>
   }
 
   Widget headerWidget() {
-    ImageProvider assetProvider = AssetImage("images/Hank.png");
+    ImageProvider assetProvider = AssetImage("images/avatar.png");
     return Container(
       color: Colors.white,
       height: 200,
