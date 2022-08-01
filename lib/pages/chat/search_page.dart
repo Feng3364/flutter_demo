@@ -5,7 +5,7 @@ import 'chat_model.dart';
 
 class SearchPage extends StatefulWidget {
   final List<Chat> datas;
-  const SearchPage({this.datas});
+  const SearchPage({required this.datas});
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -28,8 +28,6 @@ class _SearchPageState extends State<SearchPage> {
     List<TextSpan> spans = [];
     List<String> strs = name.split(_searchText);
     for (int i = 0; i < strs.length; i++) {
-      String str = strs[i];
-
       spans.add(TextSpan(text: _searchText, style: _highLightStyle));
       spans.add(TextSpan(text: strs[i], style: _normalStyle));
     }

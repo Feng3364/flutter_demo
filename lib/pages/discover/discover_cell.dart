@@ -7,7 +7,12 @@ class DiscoverCell extends StatefulWidget {
   final String imageName;
   final String subImageName;
 
-  DiscoverCell({this.title, this.subTitle, this.imageName, this.subImageName});
+  DiscoverCell({
+    required this.title,
+    this.subTitle = "",
+    this.imageName = "",
+    this.subImageName = "",
+  });
 
   State<StatefulWidget> createState() => _DiscoverCellState();
 }
@@ -19,9 +24,9 @@ class _DiscoverCellState extends State<DiscoverCell> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) => DiscoverChildPage(title: widget.title))
-        );
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) =>
+                DiscoverChildPage(title: widget.title)));
         setState(() {
           _currentColor = Colors.white;
         });
@@ -59,8 +64,8 @@ class _DiscoverCellState extends State<DiscoverCell> {
               padding: EdgeInsets.all(10),
               child: Row(
                 children: <Widget>[
-                  widget.subTitle != null ? Text(widget.subTitle) : Text(""),
-                  widget.subImageName != null
+                  Text(widget.subTitle),
+                  widget.subImageName.isNotEmpty
                       ? Image(image: AssetImage(widget.subImageName), width: 12)
                       : Container(),
                   Image(image: AssetImage("images/icon_right.png"), width: 15),

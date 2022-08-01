@@ -3,7 +3,7 @@ class Friends {
   final String name;
   final String indexLetter;
 
-  Friends({this.imageUrl, this.name, this.indexLetter});
+  Friends({required this.imageUrl, required this.name, this.indexLetter = "",});
 }
 
 List<Friends> datas = [

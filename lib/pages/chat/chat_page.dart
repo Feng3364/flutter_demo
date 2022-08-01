@@ -40,9 +40,8 @@ class _ChatPageState extends State<ChatPage>
 
   /// 异步网络请求
   Future<List<Chat>> getDatas() async {
-    final response = await http.get(
-        "http://rap2api.taobao.org/app/mock/257810/api/chat/list",
-        timeOut: 100);
+    final response = await http
+        .get("http://rap2api.taobao.org/app/mock/257810/api/chat/list");
     if (response.statusCode == 200) {
       List<Chat> chatList = response.data["chat_list"]
           .map<Chat>((item) => Chat.fromJson(item))

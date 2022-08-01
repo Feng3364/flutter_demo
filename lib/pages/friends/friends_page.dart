@@ -24,7 +24,7 @@ class _FriendsPageState extends State<FriendsPage>
 
   final List<Friends> _listDatas = [];
 
-  ScrollController _scrollController;
+  ScrollController? _scrollController;
 
   /// 初始化函数
   @override
@@ -32,7 +32,9 @@ class _FriendsPageState extends State<FriendsPage>
     super.initState();
 
     /// 链式语法
-    _listDatas..addAll(datas)..addAll(datas);
+    _listDatas
+      ..addAll(datas)
+      ..addAll(datas);
     // 排序
     _listDatas.sort((Friends a, Friends b) {
       return a.indexLetter.compareTo(b.indexLetter);
@@ -80,7 +82,7 @@ class _FriendsPageState extends State<FriendsPage>
     return FriendsCell(
       imageUrl: _listDatas[index - 4].imageUrl,
       name: _listDatas[index - 4].name,
-      groupTitle: _hiddenIndex ? null : _listDatas[index - 4].indexLetter,
+      groupTitle: _hiddenIndex ? "" : _listDatas[index - 4].indexLetter,
     );
   }
 
@@ -122,7 +124,7 @@ class _FriendsPageState extends State<FriendsPage>
           //索引表
           IndexBar(indexBarCallBack: (String str) {
             if (_groupOffsetMap[str] != null) {
-              _scrollController.animateTo(_groupOffsetMap[str],
+              _scrollController?.animateTo(_groupOffsetMap[str],
                   duration: Duration(microseconds: 100), curve: Curves.easeIn);
             }
           })

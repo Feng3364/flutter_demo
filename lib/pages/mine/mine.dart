@@ -15,7 +15,7 @@ class _MinePageState extends State<MinePage>
   @override
   bool get wantKeepAlive => true;
 
-  File _avatarFile;
+  File? _avatarFile;
   MethodChannel _methodChannel = MethodChannel("mine_page");
 
   @override
@@ -29,11 +29,12 @@ class _MinePageState extends State<MinePage>
           _avatarFile = File(imagePath);
         });
       }
-      return null;
+      return Future(() {});
     });
   }
 
   Widget headerWidget() {
+    ImageProvider assetProvider = AssetImage("images/Hank.png");
     return Container(
       color: Colors.white,
       height: 200,
@@ -54,8 +55,8 @@ class _MinePageState extends State<MinePage>
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
                         image: _avatarFile == null
-                            ? AssetImage("images/Hank.png")
-                            : FileImage(_avatarFile),
+                            ? assetProvider
+                            : FileImage(_avatarFile!),
                         fit: BoxFit.cover)),
               ),
             ),

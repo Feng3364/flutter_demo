@@ -5,7 +5,7 @@ import 'package:wechatdemo/pages/chat/search_page.dart';
 
 class SearchCell extends StatelessWidget {
   final List<Chat> datas;
-  const SearchCell({this.datas});
+  const SearchCell({required this.datas});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class SearchCell extends StatelessWidget {
 
 class SearchBar extends StatefulWidget {
   final ValueChanged<String> onChanged;
-  const SearchBar({this.onChanged});
+  const SearchBar({required this.onChanged});
 
   @override
   _SearchBarState createState() => _SearchBarState();

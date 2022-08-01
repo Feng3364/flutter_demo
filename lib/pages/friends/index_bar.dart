@@ -5,26 +5,14 @@ import '../../const.dart';
 class IndexBar extends StatefulWidget {
   final void Function(String str) indexBarCallBack;
 
-  const IndexBar({this.indexBarCallBack});
+  const IndexBar({required this.indexBarCallBack});
 
   @override
   _IndexBarState createState() => _IndexBarState();
 }
 
-int getIndex(BuildContext context, Offset globalPostion) {
-  // 拿到box
-  RenderBox box = context.findRenderObject();
-  // 拿到盒子中对应的y值
-  double y = box.globalToLocal(globalPostion).dy;
-  // 计算字符高度
-  var itemHeight = ScreenHeight(context) / 2 / INDEX_WORDS.length;
-  // 计算当前是第几个index
-  int index = (y ~/ itemHeight).clamp(0, INDEX_WORDS.length - 1);
-  return index;
-}
-
 class _IndexBarState extends State<IndexBar> {
-  bool _isDraging = false;
+  bool _isDragging = false;
   double _indicatorY = 0.0;
   String _indicatorText = "A";
 
@@ -36,7 +24,7 @@ class _IndexBarState extends State<IndexBar> {
           child: Text(
         INDEX_WORDS[i],
         style: TextStyle(
-            fontSize: 10, color: _isDraging ? Colors.white : Colors.grey),
+            fontSize: 10, color: _isDragging ? Colors.white : Colors.grey),
       )));
     }
 
@@ -50,7 +38,7 @@ class _IndexBarState extends State<IndexBar> {
           Container(
             alignment: Alignment(0.0, _indicatorY),
             width: 100,
-            child: _isDraging
+            child: _isDragging
                 ? Stack(
                     alignment: Alignment(-0.2, 0),
                     children: <Widget>[
@@ -66,14 +54,14 @@ class _IndexBarState extends State<IndexBar> {
           ),
           GestureDetector(
             child: Container(
-              color: Color.fromRGBO(1, 1, 1, _isDraging ? 0.5 : 0),
+              color: Color.fromRGBO(1, 1, 1, _isDragging ? 0.5 : 0),
               child: Column(children: words),
             ),
             onVerticalDragUpdate: (DragUpdateDetails details) {
               int index = getIndex(context, details.globalPosition);
               widget.indexBarCallBack(INDEX_WORDS[index]);
               setState(() {
-                _isDraging = true;
+                _isDragging = true;
                 _indicatorText = INDEX_WORDS[index];
                 _indicatorY = 2.2 / 28 * index - 1.1;
                 print(_indicatorY);
@@ -83,7 +71,7 @@ class _IndexBarState extends State<IndexBar> {
               int index = getIndex(context, details.globalPosition);
               widget.indexBarCallBack(INDEX_WORDS[index]);
               setState(() {
-                _isDraging = true;
+                _isDragging = true;
                 _indicatorText = INDEX_WORDS[index];
                 _indicatorY = 2.2 / 28 * index - 1.1;
                 print(_indicatorY);
@@ -91,13 +79,24 @@ class _IndexBarState extends State<IndexBar> {
             },
             onVerticalDragEnd: (DragEndDetails details) {
               setState(() {
-                _isDraging = false;
+                _isDragging = false;
               });
             },
           )
         ],
       ),
     );
+  }
+
+  int getIndex(BuildContext context, Offset globalPosition) {
+    // 拿到box
+    final container = context.findRenderObject() as RenderBox;
+    // 拿到盒子中对应的y值
+    double y = container.globalToLocal(globalPosition).dy;
+    final _itemWH = 16;
+    // 计算当前是第几个index
+    int index = (y ~/ _itemWH).clamp(0, INDEX_WORDS.length - 1);
+    return index;
   }
 }
 
