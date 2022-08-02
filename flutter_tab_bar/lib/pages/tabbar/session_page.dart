@@ -43,14 +43,9 @@ class SessionPage extends StatelessWidget {
   }
 
   Widget _buildChatWidget() {
-    return Expanded(
-      //PageView能阻挡导航栏穿透左侧列表（暂时没有更好的解决办法）
-      child: PageView(
-        children: const [
-          TabNavigator(
-            child: ChatPage(),
-          ),
-        ],
+    return const Expanded(
+      child: TabNavigator(
+        child: ChatPage(),
       ),
     );
   }

@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
+build_start_time: [1659411572, 776967048]
+build_end_time: [1659411577, 398685932]
+inputs:
+  "/Users/felix/Desktop/Practice/flutter_demo/flutter_tab_bar/macos/Flutter/GeneratedPluginRegistrant.swift": [1659411560, 458746194]
+  "/Users/felix/Desktop/Practice/flutter_demo/flutter_tab_bar/macos/Runner/AppDelegate.swift": [1659402969, 927068710]
+  "/Users/felix/Desktop/Practice/flutter_demo/flutter_tab_bar/macos/Runner/MainFlutterWindow.swift": [1659402969, 930327415]
