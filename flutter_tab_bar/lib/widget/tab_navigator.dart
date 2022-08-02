@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_main_page/route/route_widget.dart';
 
 class TabNavigator extends StatelessWidget {
-  final Widget child;
-  const TabNavigator({Key? key, required this.child}) : super(key: key);
+  final String initial;
+  const TabNavigator({Key? key, required this.initial}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(builder: (context) => child);
-      },
+      initialRoute: initial,
+      onGenerateRoute: RouteWidget.init,
     );
   }
 }

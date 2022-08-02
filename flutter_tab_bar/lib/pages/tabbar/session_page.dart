@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../route/route_name.dart';
 import '../../widget/tab_navigator.dart';
-import '../child/chat_page.dart';
 
 class SessionPage extends StatelessWidget {
   const SessionPage({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class SessionPage extends StatelessWidget {
   Widget _buildChatWidget() {
     return const Expanded(
       child: TabNavigator(
-        child: ChatPage(),
+        initial: RouteName.chat,
       ),
     );
   }

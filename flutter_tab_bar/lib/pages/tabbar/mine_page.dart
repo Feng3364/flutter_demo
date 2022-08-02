@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
+import '../../route/route_name.dart';
 
 class MinePage extends StatelessWidget {
   const MinePage({Key? key}) : super(key: key);
@@ -11,6 +11,7 @@ class MinePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('个人中心'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: TextButton(
@@ -18,10 +19,8 @@ class MinePage extends StatelessWidget {
           onPressed: () {
             final ScaffoldState state =
                 context.findRootAncestorStateOfType<ScaffoldState>()!;
-            // 也可以用pushAndRemoveUntil重置路由
-            Navigator.of(state.context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const SelectWidget()),
-            );
+            Navigator.of(state.context)
+                .pushNamedAndRemoveUntil(RouteName.login, (route) => false);
           },
         ),
       ),
