@@ -3,41 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_main_page/pages/children/card_page.dart';
 import 'package:flutter_main_page/pages/children/chat_page.dart';
 import 'package:flutter_main_page/pages/children/detail_page.dart';
-import 'package:flutter_main_page/pages/choice/login_page.dart';
-import 'package:flutter_main_page/pages/choice/not_found_page.dart';
-import 'package:flutter_main_page/pages/tabbar/contacts_page.dart';
-import 'package:flutter_main_page/pages/tabbar/mine_page.dart';
-import 'package:flutter_main_page/pages/tabbar/session_page.dart';
+import 'package:flutter_main_page/pages/root/view.dart';
 import 'package:flutter_main_page/route/route_animation.dart';
 
-import '../pages/choice/vertical_page_root_page.dart';
+import '../pages/login/view.dart';
+import '../pages/not_found_page.dart';
+import '../pages/tabbar/contacts/view.dart';
+import '../pages/tabbar/mine/view.dart';
+import '../pages/tabbar/session/view.dart';
 import 'route_name.dart';
 
 class RouteWidget {
   static Route<dynamic> init(RouteSettings settings) {
-    Widget page = const NotFoundPage();
+    Widget page = NotFoundPage();
     switch (settings.name) {
 
       /// choice
       case RouteName.login:
-        page = const LoginPage();
+        page = LoginPage();
         break;
 
       case RouteName.root:
-        page = const VerticalPageRootPage();
+        page = RootPage();
         break;
 
       /// tabBar
       case RouteName.session:
-        page = const SessionPage();
+        page = SessionPage();
         break;
 
       case RouteName.contacts:
-        page = const ContactsPage();
+        page = ContactsPage();
         break;
 
       case RouteName.mine:
-        page = const MinePage();
+        page = MinePage();
         break;
 
       /// children

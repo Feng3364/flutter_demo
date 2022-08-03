@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main_page/route/route_name.dart';
-import 'package:flutter_main_page/route/route_widget.dart';
+import 'package:get/get.dart';
+
+import 'route/route_page.dart';
 
 void main() {
-  // 假装用SharedPreferences获取值
-  bool isLogin = false;
-  runApp(MainPage(isLogin));
+  runApp(MainPage());
 }
 
 class MainPage extends StatelessWidget {
-  final bool isLogin;
-  const MainPage(this.isLogin, {Key? key}) : super(key: key);
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    // 假装用SharedPreferences获取值
+    bool isLogin = false;
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.login,
-      onGenerateRoute: RouteWidget.init,
+      initialRoute: isLogin ? RouteName.root : RouteName.login,
+      getPages: RoutePages.routes,
     );
   }
 }
