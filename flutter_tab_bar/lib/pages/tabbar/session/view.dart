@@ -13,27 +13,23 @@ class SessionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        _buildSessionWidget(),
-        _buildChatWidget(),
-      ],
+    return GetBuilder<SessionLogic>(
+      builder: (logic) => Row(
+        children: [
+          _buildSessionWidget(),
+          _buildChatWidget(),
+        ],
+      ),
     );
   }
 
   Widget _buildSessionWidget() {
     return SizedBox(
       width: 150,
-      child: GetBuilder<SessionLogic>(
-        builder: (logic) => _buildListWidget(),
+      child: ListView.builder(
+        itemCount: 20,
+        itemBuilder: _buildListItemWidget,
       ),
-    );
-  }
-
-  Widget _buildListWidget() {
-    return ListView.builder(
-      itemCount: 20,
-      itemBuilder: _buildListItemWidget,
     );
   }
 

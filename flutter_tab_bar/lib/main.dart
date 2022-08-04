@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'route/route_page.dart';
 
 void main() {
-  runApp(MainPage());
+  runApp(const MainPage());
 }
 
 class MainPage extends StatelessWidget {

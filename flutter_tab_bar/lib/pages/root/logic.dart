@@ -6,7 +6,7 @@ class RootLogic extends GetxController {
   final RootState state = RootState();
 
   ///切换tab
-  void switchTap(int index) {
+  void switchTabBar(int index) {
     state.selectedIndex = index;
     state.pageController.jumpToPage(index);
     update();

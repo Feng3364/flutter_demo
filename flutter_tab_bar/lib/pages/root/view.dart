@@ -24,7 +24,7 @@ class RootPage extends StatelessWidget {
               isUnfold: state.isUnfold,
               sideItems: state.itemList,
               //点击item
-              onItem: (index) => logic.switchTap(index),
+              onItem: (index) => logic.switchTabBar(index),
               //展开侧边栏
               onUnfold: (isUnfold) => logic.onUnfold(isUnfold),
             );

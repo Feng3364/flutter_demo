@@ -20,6 +20,12 @@ class ContactsPage extends StatelessWidget {
         controller: ScrollController(),
         itemBuilder: (BuildContext context, int index) {
           return TextButton(
+            // onPressed: () {
+            //   Navigator.of(context).pushNamed(RouteName.card, arguments: {
+            //     "userId": index.toString(),
+            //     "username": "冯$index",
+            //   });
+            // },
             onPressed: () => logic.pushCardPage(index),
             child: Column(
               children: [

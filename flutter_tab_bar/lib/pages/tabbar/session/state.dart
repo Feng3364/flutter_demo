@@ -8,7 +8,7 @@ class SessionState {
 
   SessionState() {
     selectedIndex = 0;
-    userId = "";
-    username = "";
+    userId = "$selectedIndex";
+    username = "冯$selectedIndex";
   }
 }
