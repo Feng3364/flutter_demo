@@ -14,5 +14,5 @@ class RouteName {
   /// children
   static const String card = "/card";
   static const String chat = "/chat";
-  static const String detail = "/detail";
+  static const String setting = "/setting";
 }

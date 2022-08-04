@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../children/chat_page.dart';
+import 'chat/view.dart';
 import 'logic.dart';
+import 'state.dart';
 
 class SessionPage extends StatelessWidget {
-  final SessionLogic logic = Get.put(SessionLogic());
-
   SessionPage({super.key});
+
+  final SessionLogic logic = Get.put(SessionLogic());
+  final SessionState state = Get.find<SessionLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -22,33 +24,43 @@ class SessionPage extends StatelessWidget {
   Widget _buildSessionWidget() {
     return SizedBox(
       width: 150,
-      child: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (BuildContext context, int index) {
-          return TextButton(
-            onPressed: () => logic.switchChatItem(index),
-            child: Column(
-              children: [
-                Container(
-                  height: 50,
-                  alignment: Alignment.center,
-                  child: Text('$index'),
-                ),
-                const Divider(
-                  height: 1,
-                  color: Colors.grey,
-                ),
-              ],
-            ),
-          );
-        },
+      child: GetBuilder<SessionLogic>(
+        builder: (logic) => _buildListWidget(),
+      ),
+    );
+  }
+
+  Widget _buildListWidget() {
+    return ListView.builder(
+      itemCount: 20,
+      itemBuilder: _buildListItemWidget,
+    );
+  }
+
+  Widget _buildListItemWidget(BuildContext context, int index) {
+    return GestureDetector(
+      onTap: () => logic.switchChatRoom(index),
+      child: Column(
+        children: [
+          Container(
+            height: 50,
+            color:
+                state.selectedIndex == index ? Colors.grey[400] : Colors.white,
+            alignment: Alignment.center,
+            child: Text('冯$index'),
+          ),
+          const Divider(
+            height: 1,
+            color: Colors.grey,
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildChatWidget() {
     //TODO:不隐藏式跳转
-    return const Expanded(
+    return Expanded(
       child: ChatPage(),
     );
     // return const Expanded(

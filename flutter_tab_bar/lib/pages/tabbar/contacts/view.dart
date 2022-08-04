@@ -5,6 +5,7 @@ import 'logic.dart';
 
 class ContactsPage extends StatelessWidget {
   ContactsPage({super.key});
+
   final logic = Get.put(ContactsLogic());
 
   @override
@@ -14,19 +15,27 @@ class ContactsPage extends StatelessWidget {
         title: const Text('通讯录'),
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            TextButton(
-              child: const Text('跳转会话页'),
-              onPressed: () => logic.switchSessionPage(),
+      body: ListView.builder(
+        itemCount: 20,
+        controller: ScrollController(),
+        itemBuilder: (BuildContext context, int index) {
+          return TextButton(
+            onPressed: () => logic.pushCardPage(index),
+            child: Column(
+              children: [
+                Container(
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: Text('冯$index'),
+                ),
+                const Divider(
+                  height: 1,
+                  color: Colors.grey,
+                ),
+              ],
             ),
-            TextButton(
-              child: const Text('跳转详情'),
-              onPressed: () => logic.pushDetailPage(),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

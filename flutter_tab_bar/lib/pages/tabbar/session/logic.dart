@@ -1,8 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
+import 'state.dart';
+
 class SessionLogic extends GetxController {
-  void switchChatItem(int index) {
-    debugPrint("切换到第$index个聊天窗口");
+  final SessionState state = SessionState();
+
+  void switchChatRoom(int index) {
+    state.selectedIndex = index;
+    state.userId = "$index";
+    state.username = "冯$index";
+
+    update();
   }
 }

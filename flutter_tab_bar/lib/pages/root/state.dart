@@ -37,7 +37,7 @@ class RootState {
       KeepAliveWrapper(
         child: ContactsPage(),
       ),
-      const KeepAliveWrapper(
+      KeepAliveWrapper(
         child: MinePage(),
       ),
     ];

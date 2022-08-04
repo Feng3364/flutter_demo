@@ -4,20 +4,31 @@ import 'package:get/get.dart';
 import 'logic.dart';
 
 class MinePage extends StatelessWidget {
-  const MinePage({super.key});
+  MinePage({super.key});
+
+  final MineLogic logic = Get.put(MineLogic());
 
   @override
   Widget build(BuildContext context) {
-    final MineLogic logic = Get.put(MineLogic());
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('个人中心'),
       ),
       body: Center(
-        child: TextButton(
-          child: const Text('退出登录'),
-          onPressed: () => logic.loginOut(),
+        child: SizedBox(
+          height: 100,
+          child: Column(
+            children: [
+              TextButton(
+                child: const Text('设置中心'),
+                onPressed: () => logic.pushSettingPage(),
+              ),
+              TextButton(
+                child: const Text('退出登录'),
+                onPressed: () => logic.loginOut(),
+              ),
+            ],
+          ),
         ),
       ),
     );
